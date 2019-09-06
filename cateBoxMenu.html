@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge，chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="111">
+    <meta name="description" content="111">
+    <title>移动切换栏菜单</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if lt IE 9]>
+    <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!--the-category-->
+<section class="the-category" id="vue-category">
+    <div class="in">
+        <div class="category-main">
+            <div class="cate-box">
+                <ul class="cate-list" :style="{width:cateBoxWidth,left:cateBoxLeft}" v-cloak>
+                    <li class="li" :class="{cur:v.isActive}" v-for="(v,i) in categoryList" @click="chooseCateItem(i)">
+                        <div class="mol">
+                            <i class="i"></i>
+                            <span class="t">{{v.name}}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="vue/vue.js"></script>
+<script src="vue/axios.js"></script>
+<script>
+    //vueCategory
+    const vueCategory = new Vue({
+        el: '#vue-category',
+        data(){
+            return{
+                cateBoxWidth:'100%', //盒子总宽度
+                cateBoxLeft:0,  //盒子移动距离
+                cateBoxliWidth:120, //单个li的宽度
+                cateBoxLiIndex:4, //默认索引为4，即菜单列表的'人气总榜'
+                categoryList:[],//菜单列表
+                cateSelectId:'', //选中菜单的id
+            }
+        },
+        created(){
+            this.getCategoryJson();
+        },
+        computed: {
+
+        },
+        methods:{
+            //获取菜单列表
+            getCategoryJson(){
+                let that = this;
+                let url = 'json/categoryTest.json';
+                axios.get(url)
+                    .then(response =>{
+                        that.categoryList = response.data.list;
+                        that.cateSelectId = that.categoryList[that.cateBoxLiIndex].id;
+
+                        that.$nextTick(() => {
+                            var len =  that.categoryList.length,
+                                width = that.cateBoxliWidth * len + 40;
+                            that.cateBoxWidth =  width + 'px';
+                        });
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+
+            },
+
+            //选择菜单栏
+            chooseCateItem(index){
+                let that = this,
+                    categoryList = that.categoryList,
+                    cateBoxLiIndex = that.cateBoxLiIndex,
+                    i = index;
+                that.cateBoxLeft = that.cateBoxliWidth * (cateBoxLiIndex - i) + 'px';
+                categoryList.forEach((v)=> {
+                    v.isActive = false;
+                })
+                categoryList[i].isActive = true;
+            },
+
+        }
+    });
+</script>
+</body>
+</html>

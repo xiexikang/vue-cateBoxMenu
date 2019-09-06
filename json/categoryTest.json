@@ -1,0 +1,81 @@
+{
+  "list":[
+    {
+      "id":"1001",
+      "name":"精致彩妆",
+      "isActive":false
+    },
+    {
+      "id":"1002",
+      "name":"美容护肤",
+      "isActive":false
+    },
+    {
+      "id":"1003",
+      "name":"手机配件",
+      "isActive":false
+    },
+    {
+      "id":"1004",
+      "name":"精品女鞋",
+      "isActive":false
+    },
+    {
+      "id":"1005",
+      "name":"人气总榜",
+      "isActive":true
+    },
+    {
+      "id":"1006",
+      "name":"美妆个护",
+      "isActive":false
+    },
+    {
+      "id":"1007",
+      "name":"食品饮料",
+      "isActive":false
+    },
+    {
+      "id":"1008",
+      "name":"潮流男装",
+      "isActive":false
+    },
+    {
+      "id":"1009",
+      "name":"个人护理",
+      "isActive":false
+    },{
+      "id":"1010",
+      "name":"3C数码",
+      "isActive":false
+    },{
+      "id":"1011",
+      "name":"居家日用",
+      "isActive":false
+    },{
+      "id":"1012",
+      "name":"精品女装",
+      "isActive":false
+    },{
+      "id":"1013",
+      "name":"趣味玩具",
+      "isActive":false
+    },{
+      "id":"1014",
+      "name":"母婴用品",
+      "isActive":false
+    },{
+      "id":"1015",
+      "name":"时尚饰品",
+      "isActive":false
+    }
+  ]
+
+}
+
+
+
+
+
+
+
